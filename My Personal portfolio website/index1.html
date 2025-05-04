@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Animated Single Page Website</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f5f5f5;
+    }
+
+    nav {
+      background: #333;
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #ffcc00;
+    }
+
+    .section {
+      display: none;
+      padding: 40px;
+      animation: fadeSlide 0.5s ease forwards;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .active {
+      display: block;
+    }
+
+    @keyframes fadeSlide {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    p, li {
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" onclick="showSection('home')">Home</a>
+    <a href="#" onclick="showSection('about')">About</a>
+    <a href="#" onclick="showSection('services')">Services</a>
+    <a href="#" onclick="showSection('contact')">Contact</a>
+    <a href="#" onclick="showSection('faq')">FAQ</a>
+  </nav>
+
+  <div id="home" class="section active">
+    <h1>Home</h1>
+    <p>Welcome to the Home page! Use the navbar to view other sections.</p>
+    <ul>
+      <li><strong>About</strong>: Info about us</li>
+      <li><strong>Services</strong>: What we offer</li>
+      <li><strong>Contact</strong>: How to reach us</li>
+      <li><strong>FAQ</strong>: Frequently Asked Questions</li>
+    </ul>
+  </div>
+
+  <div id="about" class="section">
+    <h1>About Us</h1>
+    <p>This is the About section with animated entry.</p>
+  </div>
+
+  <div id="services" class="section">
+    <h1>Services</h1>
+    <p>This is the Services section with a smooth animation.</p>
+  </div>
+
+  <div id="contact" class="section">
+    <h1>Contact</h1>
+    <p>This is the Contact section with a fade/slide effect.</p>
+  </div>
+
+  <div id="faq" class="section">
+    <h1>FAQ</h1>
+    <p>This is the FAQ section, animated when shown.</p>
+  </div>
+
+  <script>
+    function showSection(sectionId) {
+      const sections = document.querySelectorAll('.section');
+      sections.forEach(section => {
+        section.classList.remove('active');
+        section.style.display = 'none'; // Hide all
+      });
+
+      const activeSection = document.getElementById(sectionId);
+      activeSection.style.display = 'block'; // Show selected
+      setTimeout(() => {
+        activeSection.classList.add('active');
+      }, 10); // Slight delay for animation to trigger
+    }
+  </script>
+
+</body>
+</html>
